@@ -10,7 +10,6 @@ Small static site for GitHub Pages to host:
 
 Replace all placeholder values:
 
-- `YOUR_SUPPORT_EMAIL@example.com`
 - any contact or company details you want to show publicly
 
 ## Publish with GitHub Pages
