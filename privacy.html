@@ -9,6 +9,8 @@
       content="Noto privacy policy covering notes, photos, location reminders, sharing, and subscription data."
     />
     <meta name="theme-color" content="#f4ede5" />
+    <link rel="icon" href="./icon.png" />
+    <link rel="apple-touch-icon" href="./icon.png" />
     <style>
       :root {
         --bg: #f4ede5;
@@ -32,12 +34,15 @@
 
       html {
         color-scheme: light;
+        min-height: 100%;
       }
 
       body {
         margin: 0;
+        min-height: 100vh;
         font-family: "Avenir Next", "Segoe UI", "Noto Sans", sans-serif;
         color: var(--text);
+        background-color: var(--bg-strong);
         background:
           radial-gradient(circle at top left, rgba(255, 255, 255, 0.72), transparent 28%),
           linear-gradient(180deg, var(--bg) 0%, var(--bg-strong) 100%);
@@ -50,6 +55,7 @@
       .shell {
         width: min(980px, calc(100% - 32px));
         margin: 0 auto;
+        min-height: 100vh;
         padding: 24px 0 72px;
       }
 
@@ -73,13 +79,16 @@
         width: 42px;
         height: 42px;
         border-radius: 14px;
-        display: grid;
-        place-items: center;
-        background: linear-gradient(135deg, #c97845 0%, #9b4f27 100%);
-        color: #fff9f2;
-        font-size: 19px;
-        font-weight: 700;
+        overflow: hidden;
+        display: block;
         box-shadow: 0 10px 26px rgba(155, 79, 39, 0.24);
+      }
+
+      .brand-mark img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
       }
 
       .brand-copy {
@@ -246,7 +255,7 @@
     <main class="shell">
       <header class="topbar">
         <a class="brand" href="./index.html">
-          <span class="brand-mark">N</span>
+          <span class="brand-mark"><img src="./icon.png" alt="Noto icon" /></span>
           <span class="brand-copy">
             <strong>Noto</strong>
             <span>Legal and support</span>
