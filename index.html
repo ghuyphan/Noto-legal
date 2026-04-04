@@ -4,116 +4,310 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Noto Legal</title>
+    <meta
+      name="description"
+      content="Public privacy, support, and account deletion pages for Noto."
+    />
+    <meta name="theme-color" content="#f4ede5" />
     <style>
       :root {
-        --bg: #f7f2eb;
-        --card: #fffdfa;
-        --text: #2f251f;
-        --muted: #6f6258;
-        --line: #e3d7ca;
-        --accent: #b86b3b;
+        --bg: #f4ede5;
+        --bg-strong: #ead7c5;
+        --surface: rgba(255, 250, 244, 0.9);
+        --surface-strong: #fffaf4;
+        --text: #231814;
+        --muted: #6d5a4f;
+        --line: rgba(123, 87, 63, 0.16);
+        --accent: #ab5d31;
+        --accent-strong: #8f4821;
+        --shadow: 0 24px 70px rgba(46, 29, 20, 0.12);
+        --radius-xl: 30px;
+        --radius-lg: 22px;
+        --radius-md: 16px;
       }
 
       * {
         box-sizing: border-box;
       }
 
+      html {
+        color-scheme: light;
+      }
+
       body {
         margin: 0;
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-        background: linear-gradient(180deg, #f7f2eb 0%, #efe2d2 100%);
+        font-family: "Avenir Next", "Segoe UI", "Noto Sans", sans-serif;
         color: var(--text);
+        background:
+          radial-gradient(circle at top left, rgba(255, 255, 255, 0.72), transparent 28%),
+          radial-gradient(circle at right 10% top 20%, rgba(171, 93, 49, 0.12), transparent 22%),
+          linear-gradient(180deg, var(--bg) 0%, var(--bg-strong) 100%);
       }
 
-      .wrap {
-        max-width: 760px;
+      a {
+        color: inherit;
+      }
+
+      .shell {
+        width: min(1040px, calc(100% - 32px));
         margin: 0 auto;
-        padding: 48px 20px 80px;
+        padding: 24px 0 72px;
       }
 
-      .card {
-        background: var(--card);
+      .topbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        margin-bottom: 24px;
+      }
+
+      .brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        text-decoration: none;
+      }
+
+      .brand-mark {
+        width: 44px;
+        height: 44px;
+        border-radius: 14px;
+        display: grid;
+        place-items: center;
+        background: linear-gradient(135deg, #c97845 0%, #9b4f27 100%);
+        color: #fff9f2;
+        font-size: 20px;
+        font-weight: 700;
+        box-shadow: 0 10px 26px rgba(155, 79, 39, 0.24);
+      }
+
+      .brand-copy {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+      }
+
+      .brand-copy strong {
+        font-size: 16px;
+        letter-spacing: 0.01em;
+      }
+
+      .brand-copy span {
+        font-size: 13px;
+        color: var(--muted);
+      }
+
+      .hero {
+        padding: 34px;
         border: 1px solid var(--line);
-        border-radius: 24px;
-        padding: 28px;
-        box-shadow: 0 18px 40px rgba(47, 37, 31, 0.08);
+        border-radius: var(--radius-xl);
+        background:
+          linear-gradient(145deg, rgba(255, 255, 255, 0.72), rgba(255, 250, 244, 0.92)),
+          var(--surface);
+        backdrop-filter: blur(14px);
+        box-shadow: var(--shadow);
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 12px;
+        border-radius: 999px;
+        background: rgba(171, 93, 49, 0.1);
+        color: var(--accent-strong);
+        font-size: 13px;
+        font-weight: 600;
+        letter-spacing: 0.02em;
       }
 
       h1 {
-        margin: 0 0 8px;
-        font-size: 40px;
-        line-height: 1.05;
+        margin: 18px 0 14px;
+        max-width: 10ch;
+        font-size: clamp(42px, 9vw, 76px);
+        line-height: 0.96;
+        letter-spacing: -0.04em;
       }
 
-      p {
-        margin: 0 0 16px;
+      .lead {
+        max-width: 620px;
+        margin: 0;
         color: var(--muted);
-        line-height: 1.6;
+        font-size: clamp(16px, 2.6vw, 19px);
+        line-height: 1.72;
       }
 
-      ul {
-        padding-left: 18px;
-        color: var(--muted);
-      }
-
-      .links {
+      .grid {
         display: grid;
-        gap: 14px;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 18px;
         margin-top: 28px;
       }
 
-      a.tile {
-        display: block;
+      .tile {
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+        min-height: 210px;
+        padding: 22px;
         text-decoration: none;
-        color: var(--text);
-        background: white;
+        border-radius: var(--radius-lg);
         border: 1px solid var(--line);
-        border-radius: 18px;
-        padding: 18px 20px;
+        background: var(--surface-strong);
+        box-shadow: 0 14px 32px rgba(46, 29, 20, 0.06);
+        transition:
+          transform 160ms ease,
+          box-shadow 160ms ease,
+          border-color 160ms ease;
       }
 
-      a.tile strong {
-        display: block;
-        margin-bottom: 6px;
-        color: var(--accent);
+      .tile:hover,
+      .tile:focus-visible {
+        transform: translateY(-2px);
+        border-color: rgba(171, 93, 49, 0.32);
+        box-shadow: 0 20px 44px rgba(46, 29, 20, 0.1);
+        outline: none;
       }
 
-      .note {
-        margin-top: 24px;
+      .tile-badge {
+        width: 42px;
+        height: 42px;
+        border-radius: 14px;
+        display: grid;
+        place-items: center;
+        background: rgba(171, 93, 49, 0.1);
+        color: var(--accent-strong);
+        font-size: 20px;
+      }
+
+      .tile strong {
+        font-size: 22px;
+        line-height: 1.1;
+        letter-spacing: -0.02em;
+      }
+
+      .tile p {
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.7;
+      }
+
+      .tile span {
+        margin-top: auto;
+        color: var(--accent-strong);
+        font-size: 14px;
+        font-weight: 700;
+      }
+
+      .footer {
+        margin-top: 20px;
+        text-align: center;
+        color: var(--muted);
         font-size: 14px;
       }
+
+      @media (max-width: 860px) {
+        .grid {
+          grid-template-columns: 1fr;
+        }
+
+        .tile {
+          min-height: 0;
+        }
+      }
+
+      @media (max-width: 640px) {
+        .shell {
+          width: min(100% - 20px, 1040px);
+          padding: 16px 0 32px;
+        }
+
+        .topbar {
+          margin-bottom: 16px;
+        }
+
+        .hero {
+          padding: 22px 18px 18px;
+          border-radius: 24px;
+        }
+
+        h1 {
+          max-width: none;
+        }
+
+        .lead {
+          font-size: 16px;
+          line-height: 1.68;
+        }
+
+        .tile {
+          padding: 18px;
+          border-radius: 18px;
+        }
+
+        .footer {
+          margin-top: 16px;
+          padding: 0 8px;
+        }
+      }
     </style>
-    <!-- Build Trigger: 2026-04-04T09:40:00Z -->
   </head>
   <body>
-    <main class="wrap">
-      <section class="card">
+    <main class="shell">
+      <header class="topbar">
+        <a class="brand" href="./index.html">
+          <span class="brand-mark">N</span>
+          <span class="brand-copy">
+            <strong>Noto</strong>
+            <span>Legal and support</span>
+          </span>
+        </a>
+      </header>
+
+      <section class="hero">
+        <span class="eyebrow">Official public pages</span>
         <h1>Noto Legal</h1>
-        <p>
-          This small site hosts the public support and policy pages for Noto so
-          they can be used in Google Play and inside the app.
+        <p class="lead">
+          Find Noto's privacy policy, support contact, and account deletion
+          instructions in one place. These pages are designed for quick reading
+          on mobile and easy reference from Google Play.
         </p>
 
-        <div class="links">
+        <div class="grid">
           <a class="tile" href="./privacy.html">
+            <div class="tile-badge">P</div>
             <strong>Privacy Policy</strong>
-            How Noto handles notes, photos, location, sharing, and billing.
+            <p>
+              Learn how Noto handles account information, notes, photos,
+              location reminders, and subscription data.
+            </p>
+            <span>Open page</span>
           </a>
+
           <a class="tile" href="./support.html">
+            <div class="tile-badge">S</div>
             <strong>Support</strong>
-            Contact details for account, billing, and general app support.
+            <p>
+              Contact Noto for billing help, account access, privacy questions,
+              and product support.
+            </p>
+            <span>Open page</span>
           </a>
+
           <a class="tile" href="./delete-account.html">
+            <div class="tile-badge">D</div>
             <strong>Account Deletion</strong>
-            Public deletion instructions for Google Play compliance.
+            <p>
+              Review the public process for requesting deletion of your Noto
+              account and associated cloud data.
+            </p>
+            <span>Open page</span>
           </a>
         </div>
-
-        <p class="note">
-          Before publishing, replace the placeholder values in these files with
-          your real support email, app URLs, and company or individual details.
-        </p>
       </section>
+
+      <p class="footer">Noto</p>
     </main>
   </body>
 </html>

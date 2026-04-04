@@ -1,93 +1,279 @@
 <!doctype html>
 <html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Noto Support</title>
+    <meta
+      name="description"
+      content="Public support page for Noto account, billing, privacy, and product help."
+    />
+    <meta name="theme-color" content="#f4ede5" />
+    <style>
+      :root {
+        --bg: #f4ede5;
+        --bg-strong: #ead7c5;
+        --surface: rgba(255, 250, 244, 0.92);
+        --surface-strong: #fffaf4;
+        --text: #231814;
+        --muted: #6d5a4f;
+        --line: rgba(123, 87, 63, 0.16);
+        --accent: #ab5d31;
+        --accent-strong: #8f4821;
+        --shadow: 0 24px 70px rgba(46, 29, 20, 0.12);
+      }
 
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Noto Support</title>
-  <style>
-    :root {
-      --bg: #f7f2eb;
-      --card: #fffdfa;
-      --text: #2f251f;
-      --muted: #6f6258;
-      --line: #e3d7ca;
-      --accent: #b86b3b;
-    }
+      * {
+        box-sizing: border-box;
+      }
 
-    * {
-      box-sizing: border-box;
-    }
+      html {
+        color-scheme: light;
+      }
 
-    body {
-      margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: var(--bg);
-      color: var(--text);
-    }
+      body {
+        margin: 0;
+        font-family: "Avenir Next", "Segoe UI", "Noto Sans", sans-serif;
+        color: var(--text);
+        background:
+          radial-gradient(circle at top left, rgba(255, 255, 255, 0.72), transparent 28%),
+          linear-gradient(180deg, var(--bg) 0%, var(--bg-strong) 100%);
+      }
 
-    .wrap {
-      max-width: 760px;
-      margin: 0 auto;
-      padding: 40px 20px 72px;
-    }
+      a {
+        color: var(--accent-strong);
+      }
 
-    .card {
-      background: var(--card);
-      border: 1px solid var(--line);
-      border-radius: 24px;
-      padding: 28px;
-    }
+      .shell {
+        width: min(900px, calc(100% - 32px));
+        margin: 0 auto;
+        padding: 24px 0 72px;
+      }
 
-    h1 {
-      margin: 0 0 12px;
-      font-size: 38px;
-    }
+      .topbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        margin-bottom: 18px;
+      }
 
-    p,
-    li {
-      color: var(--muted);
-      line-height: 1.7;
-    }
+      .brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        text-decoration: none;
+        color: inherit;
+      }
 
-    a {
-      color: var(--accent);
-    }
+      .brand-mark {
+        width: 42px;
+        height: 42px;
+        border-radius: 14px;
+        display: grid;
+        place-items: center;
+        background: linear-gradient(135deg, #c97845 0%, #9b4f27 100%);
+        color: #fff9f2;
+        font-size: 19px;
+        font-weight: 700;
+      }
 
-    .back {
-      display: inline-block;
-      margin-bottom: 20px;
-    }
-  </style>
-</head>
+      .brand-copy {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+      }
 
-<body>
-  <main class="wrap">
-    <a class="back" href="./index.html">← Back</a>
-    <section class="card">
-      <h1>Noto Support</h1>
-      <p>
-        For support with Noto, including account access, billing, privacy,
-        and app issues, contact:
-      </p>
+      .brand-copy strong {
+        font-size: 16px;
+      }
 
-      <p>
-        <strong>Email:</strong>
-        <a href="mailto:giahuyphan0110@gmail.com">giahuyphan0110@gmail.com</a>
-      </p>
+      .brand-copy span {
+        font-size: 13px;
+        color: var(--muted);
+      }
 
-      <p>
-        Typical request types:
-      </p>
-      <ul>
-        <li>Purchase and subscription help</li>
-        <li>Restore purchases</li>
-        <li>Delete account requests</li>
-        <li>Privacy questions</li>
-        <li>Bug reports and feature issues</li>
-      </ul>
-    </section>
-  </main>
-</body>
+      .back {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 42px;
+        padding: 0 14px;
+        border-radius: 999px;
+        border: 1px solid var(--line);
+        background: rgba(255, 255, 255, 0.65);
+        text-decoration: none;
+        font-size: 14px;
+        font-weight: 600;
+      }
 
+      .hero,
+      .content {
+        border: 1px solid var(--line);
+        background: var(--surface);
+        box-shadow: var(--shadow);
+      }
+
+      .hero {
+        padding: 28px;
+        border-radius: 30px;
+        margin-bottom: 16px;
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        padding: 8px 12px;
+        border-radius: 999px;
+        background: rgba(171, 93, 49, 0.1);
+        color: var(--accent-strong);
+        font-size: 13px;
+        font-weight: 700;
+      }
+
+      h1 {
+        margin: 14px 0 10px;
+        font-size: clamp(34px, 7vw, 56px);
+        line-height: 1;
+        letter-spacing: -0.04em;
+      }
+
+      .hero p,
+      p,
+      li {
+        color: var(--muted);
+        line-height: 1.74;
+        font-size: 16px;
+      }
+
+      .content {
+        border-radius: 30px;
+        padding: 30px;
+      }
+
+      .contact {
+        display: grid;
+        gap: 14px;
+        margin: 0 0 22px;
+      }
+
+      .contact-card {
+        padding: 18px;
+        border-radius: 20px;
+        border: 1px solid var(--line);
+        background: var(--surface-strong);
+      }
+
+      .contact-card span {
+        display: block;
+        margin-bottom: 8px;
+        color: var(--muted);
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: 0.02em;
+        text-transform: uppercase;
+      }
+
+      .contact-card a {
+        font-size: 18px;
+        font-weight: 700;
+        text-decoration: none;
+      }
+
+      h2 {
+        margin: 0 0 12px;
+        font-size: 22px;
+        letter-spacing: -0.02em;
+      }
+
+      ul {
+        margin: 0;
+        padding-left: 20px;
+      }
+
+      .footer {
+        margin-top: 16px;
+        text-align: center;
+        color: var(--muted);
+        font-size: 14px;
+      }
+
+      @media (max-width: 640px) {
+        .shell {
+          width: min(100% - 20px, 900px);
+          padding: 16px 0 32px;
+        }
+
+        .topbar {
+          align-items: flex-start;
+          flex-direction: column;
+          margin-bottom: 12px;
+        }
+
+        .hero,
+        .content {
+          border-radius: 24px;
+        }
+
+        .hero,
+        .content {
+          padding: 22px 18px;
+        }
+
+        .hero p,
+        p,
+        li {
+          font-size: 15px;
+          line-height: 1.68;
+        }
+
+        .contact-card a {
+          font-size: 17px;
+          overflow-wrap: anywhere;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="shell">
+      <header class="topbar">
+        <a class="brand" href="./index.html">
+          <span class="brand-mark">N</span>
+          <span class="brand-copy">
+            <strong>Noto</strong>
+            <span>Legal and support</span>
+          </span>
+        </a>
+        <a class="back" href="./index.html">Back to home</a>
+      </header>
+
+      <section class="hero">
+        <span class="eyebrow">Support</span>
+        <h1>Noto Support</h1>
+        <p>
+          For help with Noto, including account access, billing, privacy, and
+          product issues, contact the support email below.
+        </p>
+      </section>
+
+      <section class="content">
+        <div class="contact">
+          <div class="contact-card">
+            <span>Support email</span>
+            <a href="mailto:giahuyphan0110@gmail.com">giahuyphan0110@gmail.com</a>
+          </div>
+        </div>
+
+        <h2>Common request types</h2>
+        <ul>
+          <li>Purchase and subscription help</li>
+          <li>Restore purchases</li>
+          <li>Delete account requests</li>
+          <li>Privacy questions</li>
+          <li>Bug reports and feature issues</li>
+        </ul>
+      </section>
+
+      <p class="footer">Noto</p>
+    </main>
+  </body>
 </html>

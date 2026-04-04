@@ -1,169 +1,371 @@
 <!doctype html>
 <html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Noto Privacy Policy</title>
+    <meta
+      name="description"
+      content="Noto privacy policy covering notes, photos, location reminders, sharing, and subscription data."
+    />
+    <meta name="theme-color" content="#f4ede5" />
+    <style>
+      :root {
+        --bg: #f4ede5;
+        --bg-strong: #ead7c5;
+        --surface: rgba(255, 250, 244, 0.92);
+        --surface-strong: #fffaf4;
+        --text: #231814;
+        --muted: #6d5a4f;
+        --line: rgba(123, 87, 63, 0.16);
+        --accent: #ab5d31;
+        --accent-strong: #8f4821;
+        --shadow: 0 24px 70px rgba(46, 29, 20, 0.12);
+        --radius-xl: 30px;
+        --radius-lg: 22px;
+        --radius-md: 16px;
+      }
 
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Noto Privacy Policy</title>
-  <style>
-    :root {
-      --bg: #f7f2eb;
-      --card: #fffdfa;
-      --text: #2f251f;
-      --muted: #6f6258;
-      --line: #e3d7ca;
-      --accent: #b86b3b;
-    }
+      * {
+        box-sizing: border-box;
+      }
 
-    * {
-      box-sizing: border-box;
-    }
+      html {
+        color-scheme: light;
+      }
 
-    body {
-      margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: var(--bg);
-      color: var(--text);
-    }
+      body {
+        margin: 0;
+        font-family: "Avenir Next", "Segoe UI", "Noto Sans", sans-serif;
+        color: var(--text);
+        background:
+          radial-gradient(circle at top left, rgba(255, 255, 255, 0.72), transparent 28%),
+          linear-gradient(180deg, var(--bg) 0%, var(--bg-strong) 100%);
+      }
 
-    .wrap {
-      max-width: 860px;
-      margin: 0 auto;
-      padding: 40px 20px 72px;
-    }
+      a {
+        color: var(--accent-strong);
+      }
 
-    .card {
-      background: var(--card);
-      border: 1px solid var(--line);
-      border-radius: 24px;
-      padding: 28px;
-    }
+      .shell {
+        width: min(980px, calc(100% - 32px));
+        margin: 0 auto;
+        padding: 24px 0 72px;
+      }
 
-    h1,
-    h2 {
-      margin: 0 0 12px;
-    }
+      .topbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        margin-bottom: 18px;
+      }
 
-    h1 {
-      font-size: 38px;
-    }
+      .brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        text-decoration: none;
+        color: inherit;
+      }
 
-    h2 {
-      font-size: 22px;
-      margin-top: 28px;
-    }
+      .brand-mark {
+        width: 42px;
+        height: 42px;
+        border-radius: 14px;
+        display: grid;
+        place-items: center;
+        background: linear-gradient(135deg, #c97845 0%, #9b4f27 100%);
+        color: #fff9f2;
+        font-size: 19px;
+        font-weight: 700;
+        box-shadow: 0 10px 26px rgba(155, 79, 39, 0.24);
+      }
 
-    p,
-    li {
-      color: var(--muted);
-      line-height: 1.7;
-    }
+      .brand-copy {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+      }
 
-    a {
-      color: var(--accent);
-    }
+      .brand-copy strong {
+        font-size: 16px;
+      }
 
-    .meta {
-      margin-bottom: 20px;
-    }
+      .brand-copy span {
+        font-size: 13px;
+        color: var(--muted);
+      }
 
-    .back {
-      display: inline-block;
-      margin-bottom: 20px;
-    }
+      .back {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 42px;
+        padding: 0 14px;
+        border-radius: 999px;
+        border: 1px solid var(--line);
+        background: rgba(255, 255, 255, 0.65);
+        text-decoration: none;
+        font-size: 14px;
+        font-weight: 600;
+      }
 
-    code {
-      background: #f2e6d8;
-      padding: 2px 6px;
-      border-radius: 6px;
-    }
-  </style>
-</head>
+      .hero,
+      .content {
+        border: 1px solid var(--line);
+        background: var(--surface);
+        backdrop-filter: blur(14px);
+        box-shadow: var(--shadow);
+      }
 
-<body>
-  <main class="wrap">
-    <a class="back" href="./index.html">← Back</a>
-    <section class="card">
-      <h1>Privacy Policy for Noto</h1>
-      <p class="meta">
-        Effective date: <strong>April 4, 2026</strong><br />
-        Contact: <strong>giahuyphan0110@gmail.com</strong>
-      </p>
+      .hero {
+        padding: 28px;
+        border-radius: var(--radius-xl);
+        margin-bottom: 16px;
+      }
 
-      <p>
-        Noto is a place-linked notes and photo memories app. This Privacy
-        Policy explains what information Noto collects, how it is used, and
-        what choices you have.
-      </p>
+      .eyebrow {
+        display: inline-flex;
+        padding: 8px 12px;
+        border-radius: 999px;
+        background: rgba(171, 93, 49, 0.1);
+        color: var(--accent-strong);
+        font-size: 13px;
+        font-weight: 700;
+      }
 
-      <h2>Information We Collect</h2>
-      <ul>
-        <li>Account information such as email address, display name, and profile photo when you sign in.</li>
-        <li>Notes, photos, live photo motion clips, doodles, stickers, and other content you create in the app.</li>
-        <li>Location data when you save a note to a place or enable nearby reminders.</li>
-        <li>Subscription and purchase status information needed to unlock Noto Plus features.</li>
-        <li>Device and app information needed for notifications, sync, diagnostics, and billing.</li>
-      </ul>
+      h1 {
+        margin: 14px 0 10px;
+        font-size: clamp(36px, 7vw, 60px);
+        line-height: 0.98;
+        letter-spacing: -0.04em;
+      }
 
-      <h2>How We Use Information</h2>
-      <ul>
-        <li>To save and display your place-linked memories.</li>
-        <li>To remind you when you return to saved places.</li>
-        <li>To sync your notes and media across devices when cloud features are enabled.</li>
-        <li>To support sharing features with friends that you explicitly use.</li>
-        <li>To manage subscriptions, restore purchases, and provide customer support.</li>
-      </ul>
+      .hero p {
+        max-width: 720px;
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.72;
+        font-size: 17px;
+      }
 
-      <h2>Location Data</h2>
-      <p>
-        If you enable reminders, Noto may access location data in the
-        background so it can notify you when you return to a saved place, even
-        when the app is closed or not in use. Background location is used for
-        nearby note reminders.
-      </p>
+      .meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 18px;
+      }
 
-      <h2>Cloud Services</h2>
-      <p>
-        Noto may use third-party service providers such as Supabase for
-        account, storage, sync, and sharing features, and RevenueCat and
-        Google Play Billing for subscription management.
-      </p>
+      .chip {
+        display: inline-flex;
+        align-items: center;
+        min-height: 38px;
+        padding: 0 12px;
+        border-radius: 999px;
+        background: var(--surface-strong);
+        border: 1px solid var(--line);
+        color: var(--muted);
+        font-size: 14px;
+      }
 
-      <h2>Sharing</h2>
-      <p>
-        If you choose to share content with friends, the shared content and
-        related profile details may be made available to the users you select.
-      </p>
+      .content {
+        border-radius: var(--radius-xl);
+        padding: 30px;
+      }
 
-      <h2>Your Choices</h2>
-      <ul>
-        <li>You can disable location permissions in your device settings.</li>
-        <li>You can disable notifications in your device settings.</li>
-        <li>You can delete local content inside the app.</li>
-        <li>You can request account deletion using the instructions on the Account Deletion page.</li>
-      </ul>
+      h2 {
+        margin: 28px 0 12px;
+        font-size: 22px;
+        line-height: 1.2;
+        letter-spacing: -0.02em;
+      }
 
-      <h2>Data Retention</h2>
-      <p>
-        We retain information for as long as needed to provide app features,
-        comply with legal obligations, resolve disputes, and enforce
-        agreements. You can request deletion of your account and associated
-        cloud data.
-      </p>
+      h2:first-of-type {
+        margin-top: 0;
+      }
 
-      <h2>Children</h2>
-      <p>
-        Noto is not directed to children under the age required by applicable
-        law in your region.
-      </p>
+      p,
+      li {
+        color: var(--muted);
+        line-height: 1.76;
+        font-size: 16px;
+      }
 
-      <h2>Contact</h2>
-      <p>
-        If you have privacy questions, contact
-        <strong>giahuyphan0110@gmail.com</strong>.
-      </p>
-    </section>
-  </main>
-</body>
+      ul {
+        margin: 0;
+        padding-left: 20px;
+      }
 
+      .footer {
+        margin-top: 16px;
+        text-align: center;
+        color: var(--muted);
+        font-size: 14px;
+      }
+
+      @media (max-width: 640px) {
+        .shell {
+          width: min(100% - 20px, 980px);
+          padding: 16px 0 32px;
+        }
+
+        .topbar {
+          align-items: flex-start;
+          flex-direction: column;
+          margin-bottom: 12px;
+        }
+
+        .hero,
+        .content {
+          border-radius: 24px;
+        }
+
+        .hero {
+          padding: 22px 18px;
+        }
+
+        .content {
+          padding: 22px 18px;
+        }
+
+        .hero p,
+        p,
+        li {
+          font-size: 15px;
+          line-height: 1.68;
+        }
+
+        h2 {
+          font-size: 20px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="shell">
+      <header class="topbar">
+        <a class="brand" href="./index.html">
+          <span class="brand-mark">N</span>
+          <span class="brand-copy">
+            <strong>Noto</strong>
+            <span>Legal and support</span>
+          </span>
+        </a>
+        <a class="back" href="./index.html">Back to home</a>
+      </header>
+
+      <section class="hero">
+        <span class="eyebrow">Privacy Policy</span>
+        <h1>Privacy Policy for Noto</h1>
+        <p>
+          Noto is a place-linked notes and photo memories app. This Privacy
+          Policy explains what information Noto uses, how that information
+          supports the product, and what choices you have.
+        </p>
+        <div class="meta">
+          <span class="chip">Effective date: April 4, 2026</span>
+          <span class="chip">Contact: giahuyphan0110@gmail.com</span>
+        </div>
+      </section>
+
+      <section class="content">
+        <h2>Information We Collect</h2>
+        <ul>
+          <li>
+            Account information such as email address, display name, and
+            profile photo when you sign in.
+          </li>
+          <li>
+            Notes, photos, live photo motion clips, doodles, stickers, and
+            other content you create in the app.
+          </li>
+          <li>
+            Location data when you save a note to a place or enable nearby
+            reminders.
+          </li>
+          <li>
+            Subscription and purchase status information needed to unlock Noto
+            Plus features.
+          </li>
+          <li>
+            Device and app information needed for notifications, sync,
+            diagnostics, and billing.
+          </li>
+        </ul>
+
+        <h2>How We Use Information</h2>
+        <ul>
+          <li>To save and display your place-linked memories.</li>
+          <li>To remind you when you return to saved places.</li>
+          <li>
+            To sync your notes and media across devices when cloud features are
+            enabled.
+          </li>
+          <li>
+            To support sharing features with friends that you explicitly use.
+          </li>
+          <li>
+            To manage subscriptions, restore purchases, and provide customer
+            support.
+          </li>
+        </ul>
+
+        <h2>Location Data</h2>
+        <p>
+          If you enable reminders, Noto may access location data in the
+          background so it can notify you when you return to a saved place,
+          even when the app is closed or not in use. Background location is
+          used for nearby note reminders.
+        </p>
+
+        <h2>Cloud Services</h2>
+        <p>
+          Noto may use third-party service providers such as Supabase for
+          account, storage, sync, and sharing features, and RevenueCat and
+          Google Play Billing for subscription management.
+        </p>
+
+        <h2>Sharing</h2>
+        <p>
+          If you choose to share content with friends, the shared content and
+          related profile details may be made available to the users you
+          select.
+        </p>
+
+        <h2>Your Choices</h2>
+        <ul>
+          <li>You can disable location permissions in your device settings.</li>
+          <li>You can disable notifications in your device settings.</li>
+          <li>You can delete local content inside the app.</li>
+          <li>
+            You can request account deletion using the instructions on the
+            Account Deletion page.
+          </li>
+        </ul>
+
+        <h2>Data Retention</h2>
+        <p>
+          We retain information for as long as needed to provide app features,
+          comply with legal obligations, resolve disputes, and enforce
+          agreements. You can request deletion of your account and associated
+          cloud data.
+        </p>
+
+        <h2>Children</h2>
+        <p>
+          Noto is not directed to children under the age required by applicable
+          law in your region.
+        </p>
+
+        <h2>Contact</h2>
+        <p>
+          If you have privacy questions, contact
+          <a href="mailto:giahuyphan0110@gmail.com">giahuyphan0110@gmail.com</a>.
+        </p>
+      </section>
+
+      <p class="footer">Noto</p>
+    </main>
+  </body>
 </html>
