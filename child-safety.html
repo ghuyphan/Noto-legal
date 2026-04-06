@@ -1,0 +1,323 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Noto Child Safety Standards</title>
+    <meta
+      name="description"
+      content="Public child safety standards for Noto covering CSAE prohibition, reporting, and enforcement."
+    />
+    <meta name="theme-color" content="#f4ede5" />
+    <link rel="icon" href="./icon.png" />
+    <link rel="apple-touch-icon" href="./icon.png" />
+    <style>
+      :root {
+        --bg: #f4ede5;
+        --bg-strong: #ead7c5;
+        --surface: rgba(255, 250, 244, 0.92);
+        --surface-strong: #fffaf4;
+        --text: #231814;
+        --muted: #6d5a4f;
+        --line: rgba(123, 87, 63, 0.16);
+        --accent: #ab5d31;
+        --accent-strong: #8f4821;
+        --shadow: 0 24px 70px rgba(46, 29, 20, 0.12);
+        --radius-xl: 30px;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        color-scheme: light;
+        min-height: 100%;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        font-family: "Avenir Next", "Segoe UI", "Noto Sans", sans-serif;
+        color: var(--text);
+        background-color: var(--bg-strong);
+        background:
+          radial-gradient(circle at top left, rgba(255, 255, 255, 0.72), transparent 28%),
+          linear-gradient(180deg, var(--bg) 0%, var(--bg-strong) 100%);
+      }
+
+      a {
+        color: var(--accent-strong);
+      }
+
+      .shell {
+        width: min(980px, calc(100% - 32px));
+        margin: 0 auto;
+        min-height: 100vh;
+        padding: 24px 0 72px;
+      }
+
+      .topbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        margin-bottom: 18px;
+      }
+
+      .brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        text-decoration: none;
+        color: inherit;
+      }
+
+      .brand-mark {
+        width: 42px;
+        height: 42px;
+        border-radius: 14px;
+        overflow: hidden;
+        display: block;
+        box-shadow: 0 10px 26px rgba(155, 79, 39, 0.24);
+      }
+
+      .brand-mark img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .brand-copy {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+      }
+
+      .brand-copy strong {
+        font-size: 16px;
+      }
+
+      .brand-copy span {
+        font-size: 13px;
+        color: var(--muted);
+      }
+
+      .back {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 42px;
+        padding: 0 14px;
+        border-radius: 999px;
+        border: 1px solid var(--line);
+        background: rgba(255, 255, 255, 0.65);
+        text-decoration: none;
+        font-size: 14px;
+        font-weight: 600;
+      }
+
+      .hero,
+      .content {
+        border: 1px solid var(--line);
+        background: var(--surface);
+        backdrop-filter: blur(14px);
+        box-shadow: var(--shadow);
+      }
+
+      .hero {
+        padding: 28px;
+        border-radius: var(--radius-xl);
+        margin-bottom: 16px;
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        padding: 8px 12px;
+        border-radius: 999px;
+        background: rgba(171, 93, 49, 0.1);
+        color: var(--accent-strong);
+        font-size: 13px;
+        font-weight: 700;
+      }
+
+      h1 {
+        margin: 14px 0 10px;
+        font-size: clamp(36px, 7vw, 60px);
+        line-height: 0.98;
+        letter-spacing: -0.04em;
+      }
+
+      .hero p {
+        max-width: 760px;
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.72;
+        font-size: 17px;
+      }
+
+      .meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 18px;
+      }
+
+      .chip {
+        display: inline-flex;
+        align-items: center;
+        min-height: 38px;
+        padding: 0 12px;
+        border-radius: 999px;
+        background: var(--surface-strong);
+        border: 1px solid var(--line);
+        color: var(--muted);
+        font-size: 14px;
+      }
+
+      .content {
+        border-radius: var(--radius-xl);
+        padding: 30px;
+      }
+
+      h2 {
+        margin: 28px 0 12px;
+        font-size: 22px;
+        line-height: 1.2;
+        letter-spacing: -0.02em;
+      }
+
+      h2:first-of-type {
+        margin-top: 0;
+      }
+
+      p,
+      li {
+        color: var(--muted);
+        line-height: 1.76;
+        font-size: 16px;
+      }
+
+      ul {
+        margin: 0;
+        padding-left: 20px;
+      }
+
+      .footer {
+        margin-top: 16px;
+        text-align: center;
+        color: var(--muted);
+        font-size: 14px;
+      }
+
+      @media (max-width: 640px) {
+        .shell {
+          width: min(100% - 20px, 980px);
+          padding: 16px 0 32px;
+        }
+
+        .topbar {
+          align-items: flex-start;
+          flex-direction: column;
+          margin-bottom: 12px;
+        }
+
+        .hero,
+        .content {
+          border-radius: 24px;
+        }
+
+        .hero {
+          padding: 22px 18px;
+        }
+
+        .content {
+          padding: 22px 18px;
+        }
+
+        .hero p,
+        p,
+        li {
+          font-size: 15px;
+          line-height: 1.68;
+        }
+
+        h2 {
+          font-size: 20px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="shell">
+      <header class="topbar">
+        <a class="brand" href="./index.html">
+          <span class="brand-mark"><img src="./icon.png" alt="Noto icon" /></span>
+          <span class="brand-copy">
+            <strong>Noto</strong>
+            <span>Legal and support</span>
+          </span>
+        </a>
+        <a class="back" href="./index.html">Back to home</a>
+      </header>
+
+      <section class="hero">
+        <span class="eyebrow">Child safety</span>
+        <h1>Noto Child Safety Standards</h1>
+        <p>
+          Noto prohibits child sexual abuse and exploitation. This page
+          summarizes the standards, reporting path, and enforcement approach
+          used for the app's public compliance disclosures.
+        </p>
+        <div class="meta">
+          <span class="chip">Effective date: April 6, 2026</span>
+          <span class="chip">App: Noto</span>
+          <span class="chip">Contact: giahuyphan0110@gmail.com</span>
+        </div>
+      </section>
+
+      <section class="content">
+        <h2>Zero tolerance for CSAE</h2>
+        <p>
+          Noto prohibits any form of child sexual abuse and exploitation
+          (CSAE), including content, behavior, or interactions that sexualize,
+          exploit, groom, or endanger minors.
+        </p>
+
+        <h2>Prohibited behavior</h2>
+        <ul>
+          <li>Create, upload, store, share, request, or promote child sexual abuse material</li>
+          <li>Groom, exploit, or sexually endanger minors</li>
+          <li>Facilitate trafficking, coercion, or sexual exploitation involving minors</li>
+          <li>Use Noto to coordinate, encourage, or normalize abuse of children</li>
+        </ul>
+
+        <h2>Reporting and enforcement</h2>
+        <p>
+          If Noto becomes aware of content or behavior involving CSAE or child
+          sexual abuse material, action may include content removal, account
+          restriction or termination, preservation of relevant information as
+          required by law, and reporting to appropriate authorities or reporting
+          organizations where required.
+        </p>
+
+        <h2>How to report concerns</h2>
+        <p>
+          To report child safety concerns related to Noto, contact
+          <a href="mailto:giahuyphan0110@gmail.com">giahuyphan0110@gmail.com</a>.
+          Please include enough detail for review, such as the account involved,
+          relevant dates, and a description of the concern.
+        </p>
+
+        <h2>Point of contact</h2>
+        <p>
+          The designated point of contact for Google Play child safety matters is
+          <a href="mailto:giahuyphan0110@gmail.com">giahuyphan0110@gmail.com</a>.
+        </p>
+      </section>
+
+      <p class="footer">Noto</p>
+    </main>
+  </body>
+</html>

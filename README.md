@@ -4,6 +4,7 @@ Small static site for GitHub Pages to host:
 
 - `privacy.html`
 - `support.html`
+- `child-safety.html`
 - `delete-account.html`
 
 ## Before publishing
@@ -27,5 +28,6 @@ After Pages is live, use:
 
 - Privacy policy: `https://YOUR_USERNAME.github.io/YOUR_REPO/privacy.html`
 - Support: `https://YOUR_USERNAME.github.io/YOUR_REPO/support.html`
+- Child safety standards: `https://YOUR_USERNAME.github.io/YOUR_REPO/child-safety.html`
 - Account deletion: `https://YOUR_USERNAME.github.io/YOUR_REPO/delete-account.html`
 # Noto-legal
