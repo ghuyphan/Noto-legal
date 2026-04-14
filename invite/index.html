@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Redirecting to Noto invite</title>
+    <meta name="theme-color" content="#f4ede5" />
+    <link rel="icon" href="../icon.png" />
+    <link rel="apple-touch-icon" href="../icon.png" />
+    <script>
+      const target = new URL('../friends/join/', window.location.href);
+      target.search = window.location.search;
+      target.hash = window.location.hash;
+      window.location.replace(target.toString());
+    </script>
+    <style>
+      body {
+        margin: 0;
+        min-height: 100vh;
+        display: grid;
+        place-items: center;
+        padding: 24px;
+        font-family: "Avenir Next", "Segoe UI", "Noto Sans", sans-serif;
+        color: #231814;
+        background: linear-gradient(180deg, #f4ede5 0%, #ead7c5 100%);
+      }
+
+      p {
+        margin: 0;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <p>Redirecting to the Noto invite page...</p>
+  </body>
+</html>

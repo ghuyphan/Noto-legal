@@ -1,0 +1,283 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Open Invite in Noto</title>
+    <meta
+      name="description"
+      content="Open a Noto friend invite in the app, or retry the handoff if your browser blocked it."
+    />
+    <meta name="theme-color" content="#f4ede5" />
+    <link rel="icon" href="../../icon.png" />
+    <link rel="apple-touch-icon" href="../../icon.png" />
+    <style>
+      :root {
+        --bg: #f4ede5;
+        --bg-strong: #ead7c5;
+        --surface: rgba(255, 250, 244, 0.94);
+        --surface-strong: #fffaf4;
+        --text: #231814;
+        --muted: #6d5a4f;
+        --line: rgba(123, 87, 63, 0.16);
+        --accent: #ab5d31;
+        --accent-strong: #8f4821;
+        --shadow: 0 24px 70px rgba(46, 29, 20, 0.12);
+        --radius-xl: 30px;
+        --radius-lg: 22px;
+        --radius-md: 16px;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        font-family: "Avenir Next", "Segoe UI", "Noto Sans", sans-serif;
+        color: var(--text);
+        background:
+          radial-gradient(circle at top left, rgba(255, 255, 255, 0.72), transparent 28%),
+          radial-gradient(circle at right 10% top 20%, rgba(171, 93, 49, 0.12), transparent 22%),
+          linear-gradient(180deg, var(--bg) 0%, var(--bg-strong) 100%);
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .shell {
+        width: min(720px, calc(100% - 24px));
+        margin: 0 auto;
+        min-height: 100vh;
+        padding: 18px 0 32px;
+        display: flex;
+        align-items: center;
+      }
+
+      .card {
+        width: 100%;
+        padding: 28px 22px 22px;
+        border: 1px solid var(--line);
+        border-radius: var(--radius-xl);
+        background:
+          linear-gradient(145deg, rgba(255, 255, 255, 0.72), rgba(255, 250, 244, 0.92)),
+          var(--surface);
+        backdrop-filter: blur(14px);
+        box-shadow: var(--shadow);
+      }
+
+      .brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 18px;
+      }
+
+      .brand-mark {
+        width: 44px;
+        height: 44px;
+        border-radius: 14px;
+        overflow: hidden;
+        box-shadow: 0 10px 26px rgba(155, 79, 39, 0.24);
+      }
+
+      .brand-mark img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .brand-copy {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+      }
+
+      .brand-copy strong {
+        font-size: 16px;
+      }
+
+      .brand-copy span {
+        font-size: 13px;
+        color: var(--muted);
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 12px;
+        border-radius: 999px;
+        background: rgba(171, 93, 49, 0.1);
+        color: var(--accent-strong);
+        font-size: 13px;
+        font-weight: 600;
+        letter-spacing: 0.02em;
+      }
+
+      h1 {
+        margin: 16px 0 10px;
+        font-size: clamp(34px, 7vw, 54px);
+        line-height: 1;
+        letter-spacing: -0.04em;
+      }
+
+      .subtitle {
+        margin: 0;
+        color: var(--muted);
+        font-size: 17px;
+        line-height: 1.72;
+      }
+
+      .status {
+        margin-top: 20px;
+        padding: 14px 16px;
+        border-radius: var(--radius-md);
+        background: rgba(171, 93, 49, 0.08);
+        color: var(--accent-strong);
+        font-weight: 600;
+        line-height: 1.5;
+      }
+
+      .status[data-tone="success"] {
+        background: rgba(74, 167, 110, 0.14);
+        color: #286845;
+      }
+
+      .status[data-tone="warn"] {
+        background: rgba(171, 93, 49, 0.12);
+        color: #8f4821;
+      }
+
+      .status[data-tone="error"] {
+        background: rgba(175, 54, 54, 0.12);
+        color: #8f2222;
+      }
+
+      .details {
+        margin: 18px 0 0;
+        color: var(--muted);
+        line-height: 1.7;
+      }
+
+      .actions {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+        margin-top: 22px;
+      }
+
+      .button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 52px;
+        padding: 0 18px;
+        border-radius: 999px;
+        border: 1px solid var(--line);
+        background: var(--surface-strong);
+        color: var(--text);
+        font-size: 15px;
+        font-weight: 700;
+        text-align: center;
+        cursor: pointer;
+      }
+
+      .button-primary {
+        background: linear-gradient(180deg, #c66f3c 0%, #ab5d31 100%);
+        border-color: rgba(143, 72, 33, 0.28);
+        color: #fffaf4;
+      }
+
+      .button-disabled {
+        opacity: 0.56;
+        pointer-events: none;
+      }
+
+      .footer {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px 18px;
+        margin-top: 24px;
+        color: var(--muted);
+        font-size: 14px;
+      }
+
+      .footer a {
+        color: var(--accent-strong);
+        font-weight: 700;
+      }
+
+      @media (max-width: 640px) {
+        .shell {
+          width: min(100% - 16px, 720px);
+          padding: 10px 0 18px;
+        }
+
+        .card {
+          padding: 22px 16px 18px;
+          border-radius: 24px;
+        }
+
+        .actions {
+          grid-template-columns: 1fr;
+        }
+
+        .subtitle,
+        .details {
+          font-size: 16px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="shell">
+      <section class="card">
+        <a class="brand" href="../../index.html">
+          <span class="brand-mark"><img src="../../icon.png" alt="Noto icon" /></span>
+          <span class="brand-copy">
+            <strong>Noto</strong>
+            <span>Invite handoff</span>
+          </span>
+        </a>
+
+        <span class="eyebrow">Friend invite</span>
+        <h1 id="invite-title">Open this invite in Noto</h1>
+        <p id="invite-subtitle" class="subtitle">
+          We will try to open Noto automatically. If nothing happens, tap the button below.
+        </p>
+
+        <p id="invite-status" class="status" data-tone="info">Preparing your invite...</p>
+        <p id="invite-details" class="details">
+          Once Noto opens, it should take you straight to the friend join flow.
+        </p>
+
+        <div class="actions">
+          <a id="open-app-button" class="button button-primary" href="noto:///friends/join">Open in Noto</a>
+          <button id="copy-link-button" class="button" type="button">Copy invite link</button>
+          <button id="copy-app-link-button" class="button" type="button">Copy app link</button>
+          <a
+            class="button"
+            href="https://play.google.com/store/apps/details?id=com.acte.app"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            Get Noto on Google Play
+          </a>
+        </div>
+
+        <div class="footer">
+          <span>Need help?</span>
+          <a href="../../support.html">Open support</a>
+          <a href="../../privacy.html">Privacy policy</a>
+        </div>
+      </section>
+    </main>
+
+    <script src="../../invite-handler.js"></script>
+  </body>
+</html>
