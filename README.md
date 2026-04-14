@@ -21,7 +21,7 @@ Use links like:
 What it does:
 
 1. Opens as a normal `https` link in Messages, Chrome, Safari, and other apps.
-2. Tries to hand off into `noto:///friends/join?...`.
+2. Tries to hand off into `noto://friends/join?...`, with a fallback retry for browsers that prefer the empty-host form.
 3. Shows retry/copy actions if the browser blocks or delays the app launch.
 
 This is enough for a browser-based deep-link handoff without a backend.

@@ -10,7 +10,8 @@
   const inviteToken = (currentUrl.searchParams.get('invite') || '').trim();
   const inviteId = (currentUrl.searchParams.get('inviteId') || '').trim();
   const isMobile = mobileUserAgentPattern.test(window.navigator.userAgent || '');
-  const deepLink = buildDeepLink(inviteToken, inviteId);
+  const primaryDeepLink = buildDeepLink(inviteToken, inviteId, false);
+  const alternateDeepLink = buildDeepLink(inviteToken, inviteId, true);
 
   const titleNode = document.getElementById('invite-title');
   const subtitleNode = document.getElementById('invite-subtitle');
@@ -44,10 +45,14 @@
   }
 
   if (openButton) {
-    openButton.setAttribute('href', deepLink);
+    openButton.setAttribute('href', primaryDeepLink);
     openButton.addEventListener('click', function (event) {
-      event.preventDefault();
-      attemptOpen(true);
+      if (!inviteToken) {
+        event.preventDefault();
+        return;
+      }
+
+      setStatus('Opening Noto...', 'info');
     });
 
     if (!inviteToken) {
@@ -64,7 +69,7 @@
 
   if (copyAppLinkButton) {
     copyAppLinkButton.addEventListener('click', function () {
-      copyText(deepLink, 'App link copied.');
+      copyText(primaryDeepLink, 'App link copied.');
     });
   }
 
@@ -83,7 +88,7 @@
     attemptOpen(false);
   }, 320);
 
-  function buildDeepLink(token, id) {
+  function buildDeepLink(token, id, forceEmptyHost) {
     const query = new URLSearchParams();
     if (id) {
       query.set('inviteId', id);
@@ -92,7 +97,8 @@
       query.set('invite', token);
     }
     const queryString = query.toString();
-    return queryString ? 'noto:///friends/join?' + queryString : 'noto:///friends/join';
+    const basePath = forceEmptyHost ? 'noto:///friends/join' : 'noto://friends/join';
+    return queryString ? basePath + '?' + queryString : basePath;
   }
 
   function attemptOpen(force) {
@@ -138,7 +144,15 @@
       }
     }, 1500);
 
-    window.location.assign(deepLink);
+    openDeepLink(primaryDeepLink);
+
+    if (!force) {
+      window.setTimeout(function () {
+        if (!handoffDetected && document.visibilityState !== 'hidden') {
+          openDeepLink(alternateDeepLink);
+        }
+      }, 360);
+    }
 
     function cleanupAttemptListeners() {
       if (openTimer !== null) {
@@ -149,6 +163,10 @@
       window.removeEventListener('pagehide', onPageHide);
       window.removeEventListener('blur', onBlur);
     }
+  }
+
+  function openDeepLink(url) {
+    window.location.href = url;
   }
 
   function copyText(text, successMessage) {
